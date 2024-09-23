@@ -12,7 +12,7 @@ class App(XamlApplication):
         print(f"Loading XAML file: ./page.xaml")  # Adjust the path if necessary
 
         try:
-            with open("./page.xaml", "r") as file:
+            with open("page.xaml", "r") as file:
                 win.Content = XamlReader.Load(file.read())
         except Exception as e:
             print(f"Error loading XAML file: {e}")
