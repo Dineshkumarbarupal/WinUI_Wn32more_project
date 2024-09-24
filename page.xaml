@@ -1,4 +1,6 @@
-<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+     >
+
     <Page.Resources>
         <!-- Custom Style for Button to prevent color change on hover and add a border -->
         <Style TargetType="Button">
@@ -6,17 +8,16 @@
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="BorderBrush" Value="Green"/> <!-- Set the border color -->
             <Setter Property="BorderThickness" Value="7"/> <!-- Set the border thickness -->
-            <Setter Property="CornerRadius" Value="2"/> <!-- Set the corner radius for rounded corners -->
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Grid Background="{TemplateBinding Background}"
-                              BorderBrush="{TemplateBinding BorderBrush}"
-                              BorderThickness="{TemplateBinding BorderThickness}"
-                              CornerRadius="{TemplateBinding CornerRadius}">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="2"> <!-- Set the corner radius for rounded corners -->
                             <ContentPresenter HorizontalAlignment="Center"
                                               VerticalAlignment="Center"/>
-                        </Grid>
+                        </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -31,12 +32,12 @@
         </Grid.RowDefinitions>
 
         <Image Source="https://gurpreetsingh.aliens.school/whatsapp.png" 
-               Width="500" Height="500" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,55,0,0"/>
+               Width="450" Height="550" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,150,0,0"/>
 
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,455,0,0">
             <TextBlock Text="Welcome to WhatsApp" FontSize="24" Padding="10" HorizontalAlignment="Center" />
             <TextBlock Text="A simple, reliable, and private way to use WhatsApp on your computer." FontSize="13" Padding="10" HorizontalAlignment="Center" Margin="0,2,0,0" />
-            <Button Content="Get started" Padding="100" HorizontalAlignment="Center" Width="200" Margin="0,15,0,0" />
+            <Button Content="Get started" Padding="100" HorizontalAlignment="Center" Width="200" Margin="0,15,0,0" Click="GetStartedButton_Click"/>
             <TextBlock Text="Version 2.2247.3.0" FontSize="14" Padding="10" HorizontalAlignment="Center" Margin="0,15,0,0" />
         </StackPanel>
     </Grid>
