@@ -25,11 +25,15 @@
 
     <Grid Background="White">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin= "0,0,0,250" >
+        <Image Source="https://gurpreetsingh.aliens.school/whatsapp.png" 
+               Width="500" Height="500" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,55,0,0"/>
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,455,0,0">
             <TextBlock Text="Welcome to WhatsApp" FontSize="24" Padding="10" HorizontalAlignment="Center" />
             <TextBlock Text="A simple, reliable, and private way to use WhatsApp on your computer." FontSize="13" Padding="10" HorizontalAlignment="Center" Margin="0,2,0,0" />
             <Button Content="Get started" Padding="100" HorizontalAlignment="Center" Width="200" Margin="0,15,0,0" />
