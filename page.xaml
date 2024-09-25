@@ -32,13 +32,14 @@
         </Grid.RowDefinitions>
 
         <Image Source="https://gurpreetsingh.aliens.school/whatsapp.png" 
-               Width="450" Height="550" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,150,0,0"/>
-
+               Width="450" Height="550" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,155,0,0"/>
+        
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,455,0,0">
             <TextBlock Text="Welcome to WhatsApp" FontSize="24" Padding="10" HorizontalAlignment="Center" />
             <TextBlock Text="A simple, reliable, and private way to use WhatsApp on your computer." FontSize="13" Padding="10" HorizontalAlignment="Center" Margin="0,2,0,0" />
-            <Button Content="Get started" Padding="100" HorizontalAlignment="Center" Width="200" Margin="0,15,0,0" Click="GetStartedButton_Click"/>
+            <Button Name="GetStartedButton" Content="Get started" Padding="100" HorizontalAlignment="Center" Width="200" Margin="0,15,0,0" Click="GetStartedButton_Click"/>
             <TextBlock Text="Version 2.2247.3.0" FontSize="14" Padding="10" HorizontalAlignment="Center" Margin="0,15,0,0" />
         </StackPanel>
+        
     </Grid>
 </Page>
