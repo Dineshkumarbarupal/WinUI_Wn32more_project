@@ -1,34 +1,37 @@
 from win32more.xaml import XamlApplication
-from win32more.Microsoft.UI.Xaml import Window, Controls
-from win32more.Microsoft.UI.Windowing import AppWindowTitleBar
+from win32more.Microsoft.UI.Xaml import Window
+from win32more.Microsoft.UI.Xaml.Controls import Page, Button, Frame
 from win32more.Microsoft.UI.Xaml.Markup import XamlReader
 
-class MainPage(Controls.Page):
+class MainPage(Page):
     def __init__(self, frame):
         super().__init__()
-        # Load the XAML content for MainPage
-        with open("page.xaml", "r") as file:
-            self.Content = XamlReader.Load(file.read())
-
-        # Find the 'Get Started' button by its name
+        self.frame = frame  # Store the frame for navigation
+        try:
+            # Load the XAML content for MainPage
+            with open("page.xaml", "r") as file:
+                self.Content = XamlReader.Load(file.read())
+        except Exception as e:
+            print("cann't load file...")
+        # Find the 'Get Started' button by its x:Name
         get_started_button = self.FindName("GetStartedButton")
         if get_started_button:
-            # Bind the Click event to the GetStartedButton_Click method
+            print("Button found!")
             get_started_button.Click += self.GetStartedButton_Click
-
-        self.frame = frame  # Store the frame to use for navigation
 
     def GetStartedButton_Click(self, sender, e):
         # Navigate to the second page when the button is clicked
         second_page = SecondPage()
         self.frame.Navigate(second_page)
 
-class SecondPage(Controls.Page):
+
+class SecondPage(Page):
     def __init__(self):
         super().__init__()
         # Load the XAML content for SecondPage
         with open("second_page.xaml", "r") as file:
             self.Content = XamlReader.Load(file.read())
+
 
 class App(XamlApplication):
     def OnLaunched(self, args):
@@ -42,7 +45,7 @@ class App(XamlApplication):
         win.SetTitleBar(None)  # Removes the system's default title bar
 
         # Create a Frame for navigation
-        frame = Controls.Frame()
+        frame = Frame()
 
         # Set the main page to the frame
         main_page = MainPage(frame)
