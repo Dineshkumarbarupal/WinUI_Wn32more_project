@@ -6,29 +6,31 @@ from win32more.Microsoft.UI.Xaml.Markup import XamlReader
 class MainPage(Page):
     def __init__(self, frame):
         super().__init__()
-        self.frame = frame  # Store the frame for navigation
+        self.frame = frame 
         try:
-            # Load the XAML content for MainPage
+           
             with open("page.xaml", "r") as file:
                 self.Content = XamlReader.Load(file.read())
         except Exception as e:
             print("cann't load file...")
-        # Find the 'Get Started' button by its x:Name
+ 
         get_started_button = self.FindName("GetStartedButton")
         if get_started_button:
             print("Button found!")
             get_started_button.Click += self.GetStartedButton_Click
-
+        else:
+            print("button not found")
+    
     def GetStartedButton_Click(self, sender, e):
-        # Navigate to the second page when the button is clicked
+        
+           
         second_page = SecondPage()
         self.frame.Navigate(second_page)
-
-
+  
 class SecondPage(Page):
     def __init__(self):
         super().__init__()
-        # Load the XAML content for SecondPage
+        
         with open("second_page.xaml", "r") as file:
             self.Content = XamlReader.Load(file.read())
 
@@ -36,18 +38,11 @@ class SecondPage(Page):
 class App(XamlApplication):
     def OnLaunched(self, args):
         win = Window()
-
-        # Set the title to an empty string (no window title)
-        win.Title = ""  
-
-        # Extend the content into the title bar and hide the title bar
+        win.Title = ""        
         win.ExtendsContentIntoTitleBar = True
-        win.SetTitleBar(None)  # Removes the system's default title bar
-
-        # Create a Frame for navigation
+        win.SetTitleBar(None) 
         frame = Frame()
 
-        # Set the main page to the frame
         main_page = MainPage(frame)
         frame.Content = main_page
         win.Content = frame
